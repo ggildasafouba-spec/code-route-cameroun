@@ -5,8 +5,8 @@ generator client {
 // SQLite pour le développement local (pas besoin d'installer PostgreSQL)
 // En production sur Railway, changer pour postgresql
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url = env("DATABASE_URL")
 }
 
 // ============================================
