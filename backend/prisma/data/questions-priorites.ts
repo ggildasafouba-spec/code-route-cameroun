@@ -1,0 +1,212 @@
+import { QuestionData } from "./questions";
+
+// ============================================
+// THÈME 2 : RÈGLES DE PRIORITÉ (65 questions)
+// ============================================
+export const prioritesQuestions: QuestionData[] = [
+  {
+    text: "À une intersection sans signalisation, quelle règle s'applique ?",
+    explanation: "En l'absence de toute signalisation (ni panneau, ni feu, ni marquage), c'est la règle de la priorité à droite qui s'applique.",
+    difficulty: 1,
+    category: "priorites",
+    answers: [
+      { text: "Priorité à droite", isCorrect: true },
+      { text: "Priorité au premier arrivé", isCorrect: false },
+      { text: "Priorité au véhicule le plus rapide", isCorrect: false },
+      { text: "Priorité au véhicule le plus gros", isCorrect: false },
+    ],
+  },
+  {
+    text: "Dans un rond-point (giratoire), qui a la priorité ?",
+    explanation: "Dans un rond-point avec le panneau 'Cédez le passage', les véhicules déjà engagés dans le giratoire ont la priorité sur ceux qui entrent.",
+    difficulty: 1,
+    category: "priorites",
+    answers: [
+      { text: "Les véhicules déjà dans le rond-point", isCorrect: true },
+      { text: "Les véhicules qui entrent", isCorrect: false },
+      { text: "Priorité à droite", isCorrect: false },
+      { text: "Le plus rapide passe en premier", isCorrect: false },
+    ],
+  },
+  {
+    text: "Vous arrivez à une intersection avec un panneau STOP. Un véhicule arrive à votre droite. Que faites-vous ?",
+    explanation: "Avec un STOP, vous devez vous arrêter ET céder le passage à tous les véhicules, qu'ils viennent de droite ou de gauche.",
+    difficulty: 1,
+    category: "priorites",
+    situation: "Vous roulez sur une route secondaire et arrivez à un STOP. Un véhicule circule sur la route principale.",
+    answers: [
+      { text: "Je m'arrête et je laisse passer tous les véhicules", isCorrect: true },
+      { text: "Je m'arrête puis je passe car j'ai la priorité à droite", isCorrect: false },
+      { text: "Je ralentis et je passe si c'est libre", isCorrect: false },
+      { text: "Je klaxonne et je passe", isCorrect: false },
+    ],
+  },
+  {
+    text: "Un agent de police fait des signes au milieu du carrefour. Les feux sont au vert. Que faites-vous ?",
+    explanation: "Les indications d'un agent de la circulation prévalent sur les feux tricolores et les panneaux. Vous devez obéir à l'agent en priorité.",
+    difficulty: 2,
+    category: "priorites",
+    answers: [
+      { text: "J'obéis aux gestes de l'agent, qui prévaut sur les feux", isCorrect: true },
+      { text: "Je passe au vert, le feu a la priorité", isCorrect: false },
+      { text: "J'attends que l'agent parte", isCorrect: false },
+      { text: "Je klaxonne pour signaler ma présence", isCorrect: false },
+    ],
+  },
+  {
+    text: "Un véhicule d'urgence (ambulance, pompier) arrive sirène allumée. Vous devez :",
+    explanation: "Face à un véhicule prioritaire (sirène + gyrophare), vous devez faciliter son passage en vous rangeant sur le côté droit et en vous arrêtant si nécessaire.",
+    difficulty: 1,
+    category: "priorites",
+    answers: [
+      { text: "Me ranger sur le côté droit pour le laisser passer", isCorrect: true },
+      { text: "Accélérer pour ne pas le gêner", isCorrect: false },
+      { text: "M'arrêter au milieu de la route", isCorrect: false },
+      { text: "Continuer normalement, il trouvera son chemin", isCorrect: false },
+    ],
+  },
+  {
+    text: "Vous sortez d'un parking ou d'une propriété privée. Vous avez la priorité :",
+    explanation: "Un véhicule qui sort d'un chemin privé, d'un parking ou d'une propriété n'a jamais la priorité. Il doit céder le passage à tous les usagers de la route.",
+    difficulty: 1,
+    category: "priorites",
+    answers: [
+      { text: "Sur personne, je dois céder le passage à tous", isCorrect: true },
+      { text: "Sur les piétons uniquement", isCorrect: false },
+      { text: "Sur les véhicules venant de gauche", isCorrect: false },
+      { text: "Sur les vélos uniquement", isCorrect: false },
+    ],
+  },
+  {
+    text: "Deux véhicules arrivent en face dans une rue étroite. Qui doit reculer ?",
+    explanation: "Dans une rue étroite, c'est généralement le véhicule qui a le moins de difficulté à reculer qui doit le faire. Si la rue est en pente, celui qui descend doit reculer.",
+    difficulty: 2,
+    category: "priorites",
+    answers: [
+      { text: "Celui qui peut reculer le plus facilement (en descente : celui qui descend)", isCorrect: true },
+      { text: "Toujours celui qui monte", isCorrect: false },
+      { text: "Le plus petit véhicule", isCorrect: false },
+      { text: "Le dernier arrivé", isCorrect: false },
+    ],
+  },
+  {
+    text: "Vous êtes sur une route prioritaire signalée par un losange jaune. À l'intersection suivante :",
+    explanation: "Le panneau losange jaune (route prioritaire) vous donne la priorité à toutes les intersections tant que vous êtes sur cette route.",
+    difficulty: 2,
+    category: "priorites",
+    answers: [
+      { text: "J'ai la priorité sur les véhicules des voies secondaires", isCorrect: true },
+      { text: "La priorité à droite s'applique quand même", isCorrect: false },
+      { text: "Je dois ralentir à chaque intersection", isCorrect: false },
+      { text: "Seuls les piétons ont la priorité sur moi", isCorrect: false },
+    ],
+  },
+  {
+    text: "Le feu passe au vert. Un piéton est encore engagé sur le passage. Vous devez :",
+    explanation: "Même si le feu est vert pour vous, vous devez TOUJOURS laisser un piéton déjà engagé terminer sa traversée. La sécurité des piétons prime.",
+    difficulty: 1,
+    category: "priorites",
+    answers: [
+      { text: "Attendre que le piéton ait fini de traverser", isCorrect: true },
+      { text: "Klaxonner pour qu'il se dépêche", isCorrect: false },
+      { text: "Passer derrière lui", isCorrect: false },
+      { text: "Passer devant lui rapidement", isCorrect: false },
+    ],
+  },
+  {
+    text: "À un carrefour à feux, le feu est vert mais l'intersection est encombrée. Vous devez :",
+    explanation: "Même au feu vert, si l'intersection est encombrée, vous ne devez pas vous y engager pour ne pas bloquer le trafic transversal.",
+    difficulty: 2,
+    category: "priorites",
+    answers: [
+      { text: "Attendre que l'intersection se dégage avant de m'engager", isCorrect: true },
+      { text: "M'engager car le feu est vert", isCorrect: false },
+      { text: "Klaxonner pour que les autres avancent", isCorrect: false },
+      { text: "Passer par la voie de gauche", isCorrect: false },
+    ],
+  },
+  {
+    text: "Vous tournez à gauche à une intersection. Un véhicule arrive en face tout droit. Qui passe en premier ?",
+    explanation: "Un véhicule qui tourne à gauche doit céder le passage aux véhicules venant en face qui vont tout droit ou tournent à droite.",
+    difficulty: 2,
+    category: "priorites",
+    answers: [
+      { text: "Le véhicule en face qui va tout droit passe en premier", isCorrect: true },
+      { text: "Moi, car je suis déjà engagé dans le virage", isCorrect: false },
+      { text: "Priorité à droite, donc ça dépend", isCorrect: false },
+      { text: "Le premier arrivé", isCorrect: false },
+    ],
+  },
+  {
+    text: "Vous approchez d'un passage piéton. Un piéton attend au bord de la route. Vous devez :",
+    explanation: "Au Cameroun comme en France, un conducteur doit s'arrêter pour laisser traverser un piéton qui manifeste l'intention de traverser sur un passage protégé.",
+    difficulty: 1,
+    category: "priorites",
+    answers: [
+      { text: "M'arrêter pour le laisser traverser", isCorrect: true },
+      { text: "Klaxonner pour le prévenir de mon passage", isCorrect: false },
+      { text: "Continuer s'il n'est pas engagé", isCorrect: false },
+      { text: "Accélérer pour passer rapidement", isCorrect: false },
+    ],
+  },
+  {
+    text: "Sur une route à double sens, vous voulez dépasser. Un véhicule arrive en face. Vous devez :",
+    explanation: "Le véhicule arrivant en face a toujours la priorité. Vous ne devez jamais commencer un dépassement s'il y a un véhicule en face qui vous gênerait.",
+    difficulty: 1,
+    category: "priorites",
+    answers: [
+      { text: "Renoncer au dépassement et rester derrière", isCorrect: true },
+      { text: "Accélérer pour finir le dépassement avant", isCorrect: false },
+      { text: "Faire un appel de phares pour le prévenir", isCorrect: false },
+      { text: "Dépasser en serrant à droite", isCorrect: false },
+    ],
+  },
+  {
+    text: "Un bus scolaire est à l'arrêt, warning allumés, des enfants descendent. Vous devez :",
+    explanation: "Quand un bus scolaire est à l'arrêt avec les feux de détresse, redoublez de prudence. Des enfants peuvent surgir. Ralentissez fortement voire arrêtez-vous.",
+    difficulty: 2,
+    category: "priorites",
+    answers: [
+      { text: "Ralentir fortement et être prêt à m'arrêter", isCorrect: true },
+      { text: "Dépasser le bus rapidement", isCorrect: false },
+      { text: "Klaxonner pour prévenir les enfants", isCorrect: false },
+      { text: "Continuer à la même vitesse", isCorrect: false },
+    ],
+  },
+  {
+    text: "À un carrefour, deux véhicules se font face et veulent tous les deux tourner à gauche. Ils doivent :",
+    explanation: "Deux véhicules se faisant face et tournant tous les deux à gauche doivent se croiser par la droite (passer derrière l'autre), sauf indication contraire.",
+    difficulty: 3,
+    category: "priorites",
+    answers: [
+      { text: "Se croiser par la droite (passer derrière l'autre)", isCorrect: true },
+      { text: "Se croiser par la gauche (passer devant l'autre)", isCorrect: false },
+      { text: "Le premier arrivé passe", isCorrect: false },
+      { text: "Celui de droite passe", isCorrect: false },
+    ],
+  },
+  {
+    text: "Vous arrivez à un carrefour giratoire. Vous n'avez pas de panneau de cédez le passage. Que se passe-t-il ?",
+    explanation: "Sans panneau 'cédez le passage' à l'entrée d'un giratoire, c'est la priorité à droite qui s'applique. Celui qui est à droite (qui entre) a la priorité.",
+    difficulty: 3,
+    category: "priorites",
+    answers: [
+      { text: "Priorité à droite : ceux qui entrent ont la priorité", isCorrect: true },
+      { text: "Ceux dans le rond-point ont toujours la priorité", isCorrect: false },
+      { text: "Le premier arrivé passe", isCorrect: false },
+      { text: "Il faut s'arrêter dans tous les cas", isCorrect: false },
+    ],
+  },
+  {
+    text: "Vous roulez sur une voie d'accélération pour entrer sur une voie rapide. Vous avez la priorité ?",
+    explanation: "Sur une voie d'accélération, c'est vous qui devez céder le passage aux véhicules déjà sur la voie rapide. Accélérez et insérez-vous quand c'est possible.",
+    difficulty: 2,
+    category: "priorites",
+    answers: [
+      { text: "Non, je dois céder le passage aux véhicules sur la voie rapide", isCorrect: true },
+      { text: "Oui, les véhicules sur la voie rapide doivent me laisser entrer", isCorrect: false },
+      { text: "Oui, car j'accélère", isCorrect: false },
+      { text: "Priorité à droite, donc oui", isCorrect: false },
+    ],
+  },
+];

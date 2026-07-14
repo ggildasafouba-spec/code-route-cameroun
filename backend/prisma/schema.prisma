@@ -1,0 +1,415 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// SQLite pour le développement local (pas besoin d'installer PostgreSQL)
+// En production sur Railway, changer pour postgresql
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ============================================
+// UTILISATEURS & AUTHENTIFICATION
+// ============================================
+
+model User {
+  id             String         @id @default(cuid())
+  firstName      String
+  lastName       String
+  email          String?        @unique
+  phone          String         @unique
+  password       String
+  role           String @default("ELEVE")
+  city           String?
+  String String @default("B")
+  isActive       Boolean        @default(true)
+  emailVerified  Boolean        @default(false)
+  phoneVerified  Boolean        @default(false)
+  avatar         String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  autoEcole        AutoEcole?       @relation("AutoEcoleOwner")
+  enrollment       Enrollment?
+  quizAttempts     QuizAttempt[]
+  examAttempts     ExamAttempt[]
+  videoProgress    VideoProgress[]
+  lessonProgress   LessonProgress[]
+  subscription     Subscription?
+  certificates     Certificate[]
+  referrals        Referral[]
+
+  @@map("users")
+}
+
+model AutoEcole {
+  id              String   @id @default(cuid())
+  name            String
+  address         String?
+  city            String
+  phone           String?
+  email           String?
+  logo            String?
+  description     String?
+  isVerified      Boolean  @default(false)
+  isPartner       Boolean  @default(false)
+  commissionRate  Int      @default(7500)
+  examPrice       Int?
+  rating          Float    @default(0)
+  totalStudents   Int      @default(0)
+  ownerId         String   @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  owner           User         @relation("AutoEcoleOwner", fields: [ownerId], references: [id])
+  enrollments     Enrollment[]
+  referrals       Referral[]
+
+  @@map("auto_ecoles")
+}
+
+model Enrollment {
+  id          String    @id @default(cuid())
+  userId      String    @unique
+  autoEcoleId String
+  startDate   DateTime  @default(now())
+  examDate    DateTime?
+  examPassed  Boolean?
+  isActive    Boolean   @default(true)
+
+  user        User      @relation(fields: [userId], references: [id])
+  autoEcole   AutoEcole @relation(fields: [autoEcoleId], references: [id])
+
+  @@map("enrollments")
+}
+
+model Referral {
+  id              String        @id @default(cuid())
+  userId          String
+  autoEcoleId     String
+  commissionAmount Int          @default(7500)
+  status          String @default("PENDING")
+  paidAt          DateTime?
+  createdAt       DateTime      @default(now())
+
+  user            User      @relation(fields: [userId], references: [id])
+  autoEcole       AutoEcole @relation(fields: [autoEcoleId], references: [id])
+
+  @@map("referrals")
+}
+
+// ============================================
+// COURS & LEÇONS
+// ============================================
+
+model CourseCategory {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String?
+  icon        String?
+  order       Int      @default(0)
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  lessons     Lesson[]
+
+  @@map("course_categories")
+}
+
+model Lesson {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String
+  summary     String?
+  duration    Int?
+  order       Int      @default(0)
+  isPublished Boolean  @default(false)
+  categoryId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  category    CourseCategory @relation(fields: [categoryId], references: [id])
+  progress    LessonProgress[]
+  images      LessonImage[]
+
+  @@map("lessons")
+}
+
+model LessonImage {
+  id       String @id @default(cuid())
+  url      String
+  alt      String?
+  lessonId String
+
+  lesson   Lesson @relation(fields: [lessonId], references: [id])
+
+  @@map("lesson_images")
+}
+
+model LessonProgress {
+  id          String    @id @default(cuid())
+  userId      String
+  lessonId    String
+  isCompleted Boolean   @default(false)
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  user        User   @relation(fields: [userId], references: [id])
+  lesson      Lesson @relation(fields: [lessonId], references: [id])
+
+  @@unique([userId, lessonId])
+  @@map("lesson_progress")
+}
+
+// ============================================
+// VIDÉOS
+// ============================================
+
+model VideoCategory {
+  id          String  @id @default(cuid())
+  title       String
+  slug        String  @unique
+  description String?
+  order       Int     @default(0)
+
+  videos      Video[]
+
+  @@map("video_categories")
+}
+
+model Video {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String?
+  videoUrl    String
+  thumbnail   String?
+  duration    Int
+  order       Int      @default(0)
+  isPublished Boolean  @default(false)
+  categoryId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  category    VideoCategory @relation(fields: [categoryId], references: [id])
+  progress    VideoProgress[]
+
+  @@map("videos")
+}
+
+model VideoProgress {
+  id            String    @id @default(cuid())
+  userId        String
+  videoId       String
+  watchedSeconds Int      @default(0)
+  isCompleted   Boolean   @default(false)
+  completedAt   DateTime?
+  lastWatchedAt DateTime  @default(now())
+
+  user          User  @relation(fields: [userId], references: [id])
+  video         Video @relation(fields: [videoId], references: [id])
+
+  @@unique([userId, videoId])
+  @@map("video_progress")
+}
+
+// ============================================
+// QCM
+// ============================================
+
+model QuizCategory {
+  id          String     @id @default(cuid())
+  title       String
+  slug        String     @unique
+  description String?
+  icon        String?
+
+  questions   Question[]
+
+  @@map("quiz_categories")
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  text        String
+  image       String?
+  explanation String?
+  difficulty  Int      @default(1)
+  categoryId  String
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  category      QuizCategory   @relation(fields: [categoryId], references: [id])
+  answers       Answer[]
+  quizQuestions QuizQuestion[]
+
+  @@map("questions")
+}
+
+model Answer {
+  id         String  @id @default(cuid())
+  text       String
+  isCorrect  Boolean @default(false)
+  questionId String
+
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@map("answers")
+}
+
+model Quiz {
+  id            String   @id @default(cuid())
+  title         String
+  description   String?
+  totalQuestions Int      @default(10)
+  timeLimit     Int?
+  isPublished   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+
+  questions     QuizQuestion[]
+  attempts      QuizAttempt[]
+
+  @@map("quizzes")
+}
+
+model QuizQuestion {
+  id         String @id @default(cuid())
+  quizId     String
+  questionId String
+  order      Int    @default(0)
+
+  quiz       Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  question   Question @relation(fields: [questionId], references: [id])
+
+  @@unique([quizId, questionId])
+  @@map("quiz_questions")
+}
+
+model QuizAttempt {
+  id             String    @id @default(cuid())
+  userId         String
+  quizId         String
+  score          Int
+  totalQuestions Int
+  timeSpent      Int?
+  startedAt      DateTime  @default(now())
+  completedAt    DateTime?
+
+  user           User @relation(fields: [userId], references: [id])
+  quiz           Quiz @relation(fields: [quizId], references: [id])
+  responses      QuizResponse[]
+
+  @@map("quiz_attempts")
+}
+
+model QuizResponse {
+  id         String  @id @default(cuid())
+  attemptId  String
+  questionId String
+  answerId   String
+  isCorrect  Boolean
+
+  attempt    QuizAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@map("quiz_responses")
+}
+
+// ============================================
+// EXAMENS BLANCS
+// ============================================
+
+model Exam {
+  id            String   @id @default(cuid())
+  title         String
+  description   String?
+  totalQuestions Int      @default(40)
+  timeLimit     Int      @default(1800)
+  passingScore  Int      @default(28)
+  isPublished   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+
+  attempts      ExamAttempt[]
+
+  @@map("exams")
+}
+
+model ExamAttempt {
+  id             String    @id @default(cuid())
+  userId         String
+  examId         String
+  score          Int
+  totalQuestions Int
+  passed         Boolean
+  timeSpent      Int
+  startedAt      DateTime  @default(now())
+  completedAt    DateTime?
+
+  user           User @relation(fields: [userId], references: [id])
+  exam           Exam @relation(fields: [examId], references: [id])
+
+  @@map("exam_attempts")
+}
+
+// ============================================
+// ABONNEMENT (30 000 FCFA / 6 mois)
+// ============================================
+
+model Subscription {
+  id        String             @id @default(cuid())
+  userId    String             @unique
+  status    String @default("ACTIVE")
+  startDate DateTime           @default(now())
+  endDate   DateTime
+  amount    Int                @default(30000)
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+
+  user      User      @relation(fields: [userId], references: [id])
+  payment   Payment?
+
+  @@map("subscriptions")
+}
+
+model Payment {
+  id              String        @id @default(cuid())
+  subscriptionId  String        @unique
+  amount          Int
+  currency        String        @default("XAF")
+  status          String @default("PENDING")
+  method          String
+  transactionRef  String?       @unique
+  phone           String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  subscription    Subscription  @relation(fields: [subscriptionId], references: [id])
+
+  @@map("payments")
+}
+
+// ============================================
+// CERTIFICAT DE FORMATION
+// ============================================
+
+model Certificate {
+  id             String   @id @default(cuid())
+  userId         String
+  certificateRef String   @unique
+  issuedAt       DateTime @default(now())
+  expiresAt      DateTime
+  pdfUrl         String?
+
+  coursesCompleted   Boolean @default(false)
+  videosCompleted    Boolean @default(false)
+  examsPassedCount   Int     @default(0)
+  averageExamScore   Float   @default(0)
+
+  user           User @relation(fields: [userId], references: [id])
+
+  @@map("certificates")
+}
