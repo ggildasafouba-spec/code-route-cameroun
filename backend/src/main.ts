@@ -11,7 +11,13 @@ async function bootstrap() {
 
   // CORS
   app.enableCors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: [
+      process.env.FRONTEND_URL || "http://localhost:3000",
+      "https://www.coderoute-cm.com",
+      "https://coderoute-cm.com",
+      "https://code-route-cameroun.vercel.app",
+      "http://localhost:3000",
+    ],
     credentials: true,
   });
 
