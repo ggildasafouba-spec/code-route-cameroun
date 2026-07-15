@@ -12,6 +12,7 @@ export default function ConnexionPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginMethod, setLoginMethod] = useState<"email" | "phone">("phone");
   const [identifier, setIdentifier] = useState("");
+  const [countryCode, setCountryCode] = useState("+237");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -21,8 +22,8 @@ export default function ConnexionPage() {
 
     try {
       const finalIdentifier =
-        loginMethod === "phone" && !identifier.startsWith("+")
-          ? `+237${identifier}`
+        loginMethod === "phone"
+          ? `${countryCode}${identifier}`
           : identifier;
 
       const res = await fetch("http://localhost:3001/api/auth/login", {
@@ -108,14 +109,28 @@ export default function ConnexionPage() {
                 Numéro de téléphone
               </label>
               <div className="flex">
-                <span className="inline-flex items-center px-3 border border-r-0 border-gray-300 bg-gray-50 rounded-l-lg text-sm text-gray-600">
-                  +237
-                </span>
+                <select
+                  className="px-2 py-2.5 border border-r-0 border-gray-300 bg-gray-50 rounded-l-lg text-sm text-gray-600 outline-none"
+                  defaultValue="+237"
+                  onChange={(e) => setCountryCode(e.target.value)}
+                >
+                  <option value="+237">🇨🇲 +237</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+32">🇧🇪 +32</option>
+                  <option value="+41">🇨🇭 +41</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+225">🇨🇮 +225</option>
+                  <option value="+221">🇸🇳 +221</option>
+                  <option value="+241">🇬🇦 +241</option>
+                  <option value="+235">🇹🇩 +235</option>
+                </select>
                 <input
                   type="tel"
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="600000000"
+                  placeholder="6XX XXX XXX"
                   className="flex-1 px-4 py-2.5 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
                   required
                 />
