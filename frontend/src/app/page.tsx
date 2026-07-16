@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   BookOpen,
-  Video,
   ClipboardCheck,
   Trophy,
   Smartphone,
@@ -17,335 +16,221 @@ import {
   Users,
   Clock,
   Zap,
+  Play,
 } from "lucide-react";
-
-const features = [
-  {
-    icon: BookOpen,
-    title: "Cours structurés",
-    description: "10 thèmes complets : signalisation, priorités, sécurité, conduite...",
-    color: "from-blue-500 to-blue-600",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "500+ QCM interactifs",
-    description: "Questions réelles avec correction instantanée et explications détaillées.",
-    color: "from-green-500 to-green-600",
-  },
-  {
-    icon: Trophy,
-    title: "Examens blancs illimités",
-    description: "40 questions, 30 min chrono. Chaque examen est unique et différent.",
-    color: "from-purple-500 to-purple-600",
-  },
-  {
-    icon: Award,
-    title: "Certificat de formation",
-    description: "Attestation officielle après validation des critères. PDF téléchargeable.",
-    color: "from-yellow-500 to-yellow-600",
-  },
-  {
-    icon: Building,
-    title: "Auto-écoles partenaires",
-    description: "Inscription directe à l'examen via nos partenaires dans votre ville.",
-    color: "from-red-500 to-red-600",
-  },
-  {
-    icon: Smartphone,
-    title: "100% mobile",
-    description: "Révisez partout, même hors-ligne. Installable sur votre téléphone.",
-    color: "from-indigo-500 to-indigo-600",
-  },
-];
-
-const steps = [
-  { step: "01", title: "Inscrivez-vous", desc: "Payez 30 000 FCFA via Mobile Money (MTN MoMo ou Orange Money)", icon: Smartphone },
-  { step: "02", title: "Formez-vous", desc: "Cours, QCM et examens blancs pendant 6 mois à votre rythme", icon: BookOpen },
-  { step: "03", title: "Obtenez le certificat", desc: "Validez les critères (3 examens réussis à 80%+)", icon: Award },
-  { step: "04", title: "Passez l'examen", desc: "Inscrivez-vous via une auto-école partenaire", icon: Trophy },
-];
-
-const testimonials = [
-  { name: "Jean K.", city: "Douala", text: "J'ai réussi mon code du premier coup grâce à cette plateforme !", rating: 5 },
-  { name: "Marie N.", city: "Yaoundé", text: "Les QCM sont exactement comme l'examen réel. Très bien fait.", rating: 5 },
-  { name: "Paul F.", city: "Bafoussam", text: "Pratique de réviser sur le téléphone dans le bus !", rating: 4 },
-];
 
 export default function HomePage() {
   return (
     <div className="min-h-screen overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center text-white overflow-hidden">
-        {/* Background Video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          poster="https://images.pexels.com/photos/3136673/pexels-photo-3136673.jpeg?auto=compress&w=1200"
-        >
-          <source src="https://videos.pexels.com/video-files/854671/854671-hd_1920_1080_30fps.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay with gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-        {/* Colored accent overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/40 to-transparent" />
-
-        {/* Animated particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="absolute top-1/4 right-1/4 w-3 h-3 bg-yellow-400 rounded-full opacity-60"
+      {/* HERO — Image de fond avec conducteur */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+        {/* Background image — conducteur africain au volant */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1920&q=80"
+            alt="Conduite automobile"
+            className="w-full h-full object-cover"
           />
-          <motion.div
-            animate={{ y: [0, 15, 0] }}
-            transition={{ duration: 3.5, repeat: Infinity }}
-            className="absolute top-1/2 left-1/6 w-2 h-2 bg-green-400 rounded-full opacity-50"
-          />
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity }}
-            className="absolute bottom-1/3 right-1/6 w-4 h-4 bg-blue-400 rounded-full opacity-40"
-          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/40" />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 relative z-10 py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-2xl">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 bg-green-500/20 backdrop-blur-sm border border-green-500/30 px-4 py-2 rounded-full text-sm text-green-300 mb-6"
             >
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm mb-6 border border-white/20"
-              >
-                <Zap size={14} className="text-yellow-400" />
-                <span>La 1ère plateforme camerounaise de code en ligne</span>
-              </motion.div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Réussissez votre
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-green-300 to-blue-300"
-                >
-                  code de la route
-                </motion.span>
-                du premier coup
-              </h1>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7 }}
-                className="text-lg text-gray-200 mb-8 max-w-lg"
-              >
-                500+ questions, examens blancs, cours complets. Formez-vous à votre rythme
-                et obtenez votre certificat en 6 mois.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <Link
-                  href="/inscription"
-                  className="bg-gradient-to-r from-primary-500 to-blue-500 text-white font-bold py-4 px-8 rounded-xl hover:from-primary-600 hover:to-blue-600 transition-all hover:scale-105 shadow-xl shadow-primary-500/30 text-center"
-                >
-                  S&apos;inscrire — 30 000 FCFA
-                </Link>
-                <Link
-                  href="/tarif"
-                  className="border-2 border-white/30 backdrop-blur-sm text-white font-bold py-4 px-8 rounded-xl hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2"
-                >
-                  Voir le programme <ArrowRight size={18} />
-                </Link>
-              </motion.div>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              Formation 100% en ligne — Accessible partout au Cameroun
             </motion.div>
 
-            {/* Hero visual — Phone mockup */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="hidden md:block"
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6"
             >
-              <div className="relative">
-                {/* Phone mockup */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl mx-auto w-72 border border-gray-700"
-                >
-                  <div className="bg-white rounded-[2rem] overflow-hidden">
-                    <div className="bg-gradient-to-r from-primary-500 to-blue-600 p-4 text-white text-center">
-                      <p className="text-xs opacity-70">Examen blanc #3</p>
-                      <p className="text-3xl font-bold">32/40</p>
-                      <p className="text-xs mt-1">80% — Réussi ! 🎉</p>
-                    </div>
-                    <div className="p-4 space-y-3">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span className="text-xs text-gray-600">Signalisation — 95%</span>
-                        <div className="flex-1 bg-gray-100 rounded-full h-1.5 ml-auto w-16"><div className="bg-green-500 h-1.5 rounded-full" style={{width:"95%"}} /></div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span className="text-xs text-gray-600">Priorités — 85%</span>
-                        <div className="flex-1 bg-gray-100 rounded-full h-1.5 ml-auto w-16"><div className="bg-green-500 h-1.5 rounded-full" style={{width:"85%"}} /></div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span className="text-xs text-gray-600">Sécurité — 90%</span>
-                        <div className="flex-1 bg-gray-100 rounded-full h-1.5 ml-auto w-16"><div className="bg-green-500 h-1.5 rounded-full" style={{width:"90%"}} /></div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock size={16} className="text-yellow-500" />
-                        <span className="text-xs text-gray-600">Conduite — 65%</span>
-                        <div className="flex-1 bg-gray-100 rounded-full h-1.5 ml-auto w-16"><div className="bg-yellow-500 h-1.5 rounded-full" style={{width:"65%"}} /></div>
-                      </div>
-                    </div>
-                    <div className="p-3 bg-green-50 text-center border-t">
-                      <p className="text-xs font-bold text-green-700">✅ Prêt pour l&apos;examen</p>
-                    </div>
-                  </div>
-                </motion.div>
+              Obtenez votre
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-blue-400">
+                permis de conduire
+              </span>
+              depuis chez vous
+            </motion.h1>
 
-                {/* Floating badges */}
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity }}
-                  className="absolute -left-10 top-16 bg-white rounded-xl shadow-2xl p-3 flex items-center gap-2 border"
-                >
-                  <div className="w-9 h-9 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle size={18} className="text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-gray-800">Série réussie</p>
-                    <p className="text-[10px] text-gray-500">18/20 bonnes réponses</p>
-                  </div>
-                </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="text-xl text-gray-300 mb-10 leading-relaxed"
+            >
+              Préparez l&apos;examen théorique du code de la route avec nos 500+ QCM, 
+              nos examens blancs et notre suivi personnalisé. Payez avec MTN MoMo ou Orange Money.
+            </motion.p>
 
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute -right-6 bottom-24 bg-white rounded-xl shadow-2xl p-3 flex items-center gap-2 border"
-                >
-                  <div className="w-9 h-9 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <Trophy size={18} className="text-yellow-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-gray-800">Certificat obtenu</p>
-                    <p className="text-[10px] text-gray-500">CRCM-2026-00042</p>
-                  </div>
-                </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Link
+                href="/paiement"
+                className="group bg-primary-500 hover:bg-primary-600 text-white font-bold py-4 px-8 rounded-2xl transition-all hover:scale-[1.02] shadow-xl shadow-primary-500/25 text-center text-lg flex items-center justify-center gap-3"
+              >
+                Commencer ma formation
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/revision"
+                className="bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold py-4 px-8 rounded-2xl hover:bg-white/20 transition-all text-center text-lg"
+              >
+                Essayer les QCM
+              </Link>
+            </motion.div>
+
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-10 flex items-center gap-6 text-sm text-gray-400"
+            >
+              <div className="flex items-center gap-2">
+                <Shield size={16} className="text-green-400" />
+                <span>Paiement sécurisé</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users size={16} className="text-blue-400" />
+                <span>+200 élèves inscrits</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Star size={16} className="text-yellow-400" />
+                <span>4.8/5 satisfaction</span>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Stats Band */}
-      <section className="bg-white py-8 border-b shadow-sm">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { value: "500+", label: "Questions QCM" },
-              { value: "10", label: "Thèmes complets" },
-              { value: "∞", label: "Examens blancs" },
-              { value: "95%", label: "Taux de réussite" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-3xl md:text-4xl font-bold text-primary-600">{stat.value}</div>
-                <div className="text-sm text-gray-500 mt-1">{stat.label}</div>
-              </motion.div>
-            ))}
+      {/* SECTION 2 — Ce que vous apprenez (avec images) */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold mb-4"
+            >
+              Une formation complète pour
+              <span className="text-primary-500"> réussir du premier coup</span>
+            </motion.h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+              Apprenez les panneaux, les priorités, la sécurité et la conduite 
+              avec des méthodes interactives et efficaces.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left — Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80"
+                alt="Apprentissage du code de la route"
+                className="rounded-3xl shadow-2xl w-full"
+              />
+              {/* Overlay stats card */}
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-5 border">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                    <Trophy className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-gray-800">95%</p>
+                    <p className="text-xs text-gray-500">Taux de réussite</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right — Features list */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {[
+                { icon: ClipboardCheck, color: "bg-blue-100 text-blue-600", title: "500+ questions QCM", desc: "Révisez avec des questions réalistes, corrigées et expliquées une par une." },
+                { icon: Trophy, color: "bg-purple-100 text-purple-600", title: "Examens blancs illimités", desc: "40 questions en 30 minutes chrono. Chaque examen est différent du précédent." },
+                { icon: BookOpen, color: "bg-green-100 text-green-600", title: "10 thèmes de cours", desc: "Signalisation, priorités, sécurité, conduite... tout le programme officiel." },
+                { icon: Smartphone, color: "bg-orange-100 text-orange-600", title: "Accessible sur mobile", desc: "Révisez dans le bus, à la maison ou en pause. L'app fonctionne partout." },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex gap-4 items-start"
+                >
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${item.color}`}>
+                    <item.icon size={22} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">{item.title}</h3>
+                    <p className="text-gray-500">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* SECTION 3 — Comment ça marche */}
       <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Tout ce qu&apos;il faut pour <span className="text-primary-500">réussir</span>
+              4 étapes pour obtenir votre
+              <span className="text-primary-500"> certificat</span>
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Une formation complète, interactive et adaptée au code de la route camerounais.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.08 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4`}>
-                  <feature.icon className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
-              </motion.div>
-            ))}
           </div>
-        </div>
-      </section>
 
-      {/* How it works */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Comment ça <span className="text-primary-500">marche</span> ?
-            </h2>
-            <p className="text-gray-600">4 étapes simples vers votre permis de conduire</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((item, i) => (
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { step: "1", title: "Inscrivez-vous", desc: "Payez 30 000 FCFA via Mobile Money", img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80" },
+              { step: "2", title: "Étudiez", desc: "Cours, QCM, examens blancs pendant 6 mois", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=400&q=80" },
+              { step: "3", title: "Validez", desc: "Réussissez 3 examens blancs à 80%+", img: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&w=400&q=80" },
+              { step: "4", title: "Passez l'examen", desc: "Inscription en auto-école partenaire", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0571?auto=format&fit=crop&w=400&q=80" },
+            ].map((item, i) => (
               <motion.div
                 key={item.step}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.15 }}
                 viewport={{ once: true }}
-                className="text-center relative"
+                className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-blue-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl font-bold shadow-lg">
-                  {item.step}
+                <div className="relative mb-4">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-40 object-cover rounded-2xl"
+                  />
+                  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-10 h-10 bg-primary-500 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                    {item.step}
+                  </div>
                 </div>
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-gray-200" />
-                )}
-                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                <h3 className="font-bold text-lg mt-4 mb-1">{item.title}</h3>
                 <p className="text-gray-500 text-sm">{item.desc}</p>
               </motion.div>
             ))}
@@ -353,80 +238,98 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary-50 to-blue-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Un seul forfait, tout inclus</h2>
-            <p className="text-gray-600 mb-10">Pas d&apos;abonnement mensuel. Payez une fois, formez-vous 6 mois.</p>
+      {/* SECTION 4 — Tarif + image */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left — Pricing card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl font-bold mb-6">
+                Un forfait unique,<br />
+                <span className="text-primary-500">tout compris</span>
+              </h2>
+              <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-3xl p-8 border-2 border-primary-100">
+                <div className="flex items-baseline gap-2 mb-6">
+                  <span className="text-5xl font-bold text-primary-600">30 000</span>
+                  <span className="text-xl text-gray-500">FCFA / 6 mois</span>
+                </div>
+                <ul className="space-y-3 mb-8">
+                  {[
+                    "Accès à tous les cours (10 thèmes)",
+                    "500+ questions QCM avec corrections",
+                    "Examens blancs illimités",
+                    "Certificat de formation officiel",
+                    "Mise en relation auto-école",
+                    "Paiement MTN MoMo ou Orange Money",
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-gray-700">
+                      <CheckCircle size={20} className="text-green-500 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/paiement"
+                  className="block w-full bg-primary-500 hover:bg-primary-600 text-white font-bold py-4 rounded-xl text-center transition-all hover:scale-[1.02] shadow-lg text-lg"
+                >
+                  S&apos;inscrire maintenant
+                </Link>
+              </div>
+            </motion.div>
 
-            <div className="bg-white rounded-3xl shadow-xl border-2 border-primary-200 p-8 md:p-10 max-w-md mx-auto relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-primary-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl">
-                POPULAIRE
-              </div>
-              <div className="text-5xl md:text-6xl font-bold text-primary-600 mb-2">
-                30 000 <span className="text-2xl">FCFA</span>
-              </div>
-              <p className="text-gray-500 mb-8">6 mois d&apos;accès complet</p>
-              <ul className="text-left space-y-3 mb-8">
-                {[
-                  "Tous les cours (10 thèmes)",
-                  "500+ questions QCM",
-                  "Examens blancs illimités",
-                  "Certificat de formation",
-                  "Auto-école partenaire",
-                  "Paiement MTN MoMo / Orange Money",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm">
-                    <CheckCircle size={18} className="text-green-500 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/paiement"
-                className="block w-full bg-gradient-to-r from-primary-500 to-blue-600 text-white font-bold py-4 rounded-xl hover:from-primary-600 hover:to-blue-700 transition-all hover:scale-[1.02] shadow-lg text-center"
-              >
-                S&apos;inscrire maintenant
-              </Link>
-            </div>
-          </motion.div>
+            {/* Right — Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80"
+                alt="Étudiants qui apprennent"
+                className="rounded-3xl shadow-xl w-full"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 px-4 bg-white">
+      {/* SECTION 5 — Témoignages */}
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Ils ont <span className="text-primary-500">réussi</span> avec nous
+            Ils ont réussi avec <span className="text-primary-500">Code Route CM</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
+            {[
+              { name: "Jean Kamga", city: "Douala", text: "J'ai obtenu mon code du premier coup ! Les examens blancs sont identiques à l'examen réel.", avatar: "JK" },
+              { name: "Marie Nguemo", city: "Yaoundé", text: "Super pratique de réviser sur mon téléphone. L'app est claire et bien faite.", avatar: "MN" },
+              { name: "Paul Fotso", city: "Bafoussam", text: "Le certificat m'a permis de m'inscrire directement à l'examen en auto-école.", avatar: "PF" },
+            ].map((t, i) => (
               <motion.div
                 key={t.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-50 rounded-2xl p-6 border"
+                className="bg-white rounded-2xl p-6 shadow-sm border"
               >
-                <div className="flex gap-1 mb-3">
-                  {[...Array(t.rating)].map((_, j) => (
-                    <Star key={j} size={16} className="text-yellow-400 fill-yellow-400" />
+                <div className="flex gap-1 mb-4">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} size={16} className="text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4 italic">&ldquo;{t.text}&rdquo;</p>
-                <div className="flex items-center gap-3">
+                <p className="text-gray-600 mb-5 italic leading-relaxed">&ldquo;{t.text}&rdquo;</p>
+                <div className="flex items-center gap-3 pt-4 border-t">
                   <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                    <Users size={18} className="text-primary-600" />
+                    <span className="text-xs font-bold text-primary-700">{t.avatar}</span>
                   </div>
                   <div>
                     <p className="font-semibold text-sm">{t.name}</p>
-                    <p className="text-xs text-gray-500">{t.city}</p>
+                    <p className="text-xs text-gray-500">{t.city}, Cameroun</p>
                   </div>
                 </div>
               </motion.div>
@@ -435,25 +338,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Final */}
-      <section className="py-20 px-4 bg-gradient-to-r from-primary-600 to-blue-600 text-white">
-        <div className="max-w-3xl mx-auto text-center">
+      {/* SECTION 6 — CTA Final */}
+      <section className="relative py-24 px-4 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1920&q=80"
+            alt="Route africaine"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-primary-900/85" />
+        </div>
+        <div className="max-w-3xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
               Prêt à décrocher votre permis ?
             </h2>
-            <p className="text-blue-100 mb-8 text-lg">
-              Rejoignez les centaines d&apos;élèves qui ont réussi leur code avec Code Route CM.
+            <p className="text-xl text-blue-200 mb-10">
+              Rejoignez les centaines d&apos;élèves qui ont réussi avec Code Route CM.
+              Commencez dès aujourd&apos;hui.
             </p>
             <Link
-              href="/inscription"
-              className="inline-block bg-white text-primary-600 font-bold py-4 px-10 rounded-xl hover:bg-blue-50 transition-all hover:scale-105 shadow-xl"
+              href="/paiement"
+              className="inline-block bg-white text-primary-700 font-bold py-4 px-10 rounded-2xl hover:bg-gray-100 transition-all hover:scale-[1.02] shadow-2xl text-lg"
             >
-              Commencer ma formation →
+              S&apos;inscrire — 30 000 FCFA →
             </Link>
           </motion.div>
         </div>
