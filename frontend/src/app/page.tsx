@@ -75,57 +75,88 @@ export default function HomePage() {
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-700 via-primary-600 to-blue-500 text-white py-20 md:py-28 px-4">
-        {/* Animated background shapes */}
+      <section className="relative min-h-[90vh] flex items-center text-white overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="https://images.pexels.com/photos/3136673/pexels-photo-3136673.jpeg?auto=compress&w=1200"
+        >
+          <source src="https://videos.pexels.com/video-files/854671/854671-hd_1920_1080_30fps.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        {/* Colored accent overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/40 to-transparent" />
+
+        {/* Animated particles */}
         <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-20 -right-20 w-96 h-96 bg-white/5 rounded-full"
-          />
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
-            className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-white/5 rounded-full"
-          />
           <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity }}
-            className="absolute top-1/3 right-1/4 w-4 h-4 bg-yellow-400 rounded-full"
+            className="absolute top-1/4 right-1/4 w-3 h-3 bg-yellow-400 rounded-full opacity-60"
           />
           <motion.div
             animate={{ y: [0, 15, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
-            className="absolute top-1/2 left-1/4 w-3 h-3 bg-green-400 rounded-full"
+            transition={{ duration: 3.5, repeat: Infinity }}
+            className="absolute top-1/2 left-1/6 w-2 h-2 bg-green-400 rounded-full opacity-50"
+          />
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity }}
+            className="absolute bottom-1/3 right-1/6 w-4 h-4 bg-blue-400 rounded-full opacity-40"
           />
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto px-4 relative z-10 py-20">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm mb-6">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-sm mb-6 border border-white/20"
+              >
                 <Zap size={14} className="text-yellow-400" />
                 <span>La 1ère plateforme camerounaise de code en ligne</span>
-              </div>
+              </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 Réussissez votre
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-green-300">
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-green-300 to-blue-300"
+                >
                   code de la route
-                </span>
+                </motion.span>
                 du premier coup
               </h1>
-              <p className="text-lg text-blue-100 mb-8 max-w-lg">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                className="text-lg text-gray-200 mb-8 max-w-lg"
+              >
                 500+ questions, examens blancs, cours complets. Formez-vous à votre rythme
                 et obtenez votre certificat en 6 mois.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
                 <Link
                   href="/inscription"
-                  className="bg-white text-primary-600 font-bold py-4 px-8 rounded-xl hover:bg-blue-50 transition-all hover:scale-105 shadow-lg text-center"
+                  className="bg-gradient-to-r from-primary-500 to-blue-500 text-white font-bold py-4 px-8 rounded-xl hover:from-primary-600 hover:to-blue-600 transition-all hover:scale-105 shadow-xl shadow-primary-500/30 text-center"
                 >
                   S&apos;inscrire — 30 000 FCFA
                 </Link>
@@ -135,57 +166,65 @@ export default function HomePage() {
                 >
                   Voir le programme <ArrowRight size={18} />
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
 
-            {/* Hero visual */}
+            {/* Hero visual — Phone mockup */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               className="hidden md:block"
             >
               <div className="relative">
                 {/* Phone mockup */}
-                <div className="bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl mx-auto w-72">
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl mx-auto w-72 border border-gray-700"
+                >
                   <div className="bg-white rounded-[2rem] overflow-hidden">
-                    <div className="bg-primary-500 p-4 text-white text-center">
+                    <div className="bg-gradient-to-r from-primary-500 to-blue-600 p-4 text-white text-center">
                       <p className="text-xs opacity-70">Examen blanc #3</p>
-                      <p className="text-2xl font-bold">32/40</p>
-                      <p className="text-xs">80% — Réussi !</p>
+                      <p className="text-3xl font-bold">32/40</p>
+                      <p className="text-xs mt-1">80% — Réussi ! 🎉</p>
                     </div>
                     <div className="p-4 space-y-3">
                       <div className="flex items-center gap-2">
                         <CheckCircle size={16} className="text-green-500" />
                         <span className="text-xs text-gray-600">Signalisation — 95%</span>
+                        <div className="flex-1 bg-gray-100 rounded-full h-1.5 ml-auto w-16"><div className="bg-green-500 h-1.5 rounded-full" style={{width:"95%"}} /></div>
                       </div>
                       <div className="flex items-center gap-2">
                         <CheckCircle size={16} className="text-green-500" />
                         <span className="text-xs text-gray-600">Priorités — 85%</span>
+                        <div className="flex-1 bg-gray-100 rounded-full h-1.5 ml-auto w-16"><div className="bg-green-500 h-1.5 rounded-full" style={{width:"85%"}} /></div>
                       </div>
                       <div className="flex items-center gap-2">
                         <CheckCircle size={16} className="text-green-500" />
                         <span className="text-xs text-gray-600">Sécurité — 90%</span>
+                        <div className="flex-1 bg-gray-100 rounded-full h-1.5 ml-auto w-16"><div className="bg-green-500 h-1.5 rounded-full" style={{width:"90%"}} /></div>
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock size={16} className="text-yellow-500" />
                         <span className="text-xs text-gray-600">Conduite — 65%</span>
+                        <div className="flex-1 bg-gray-100 rounded-full h-1.5 ml-auto w-16"><div className="bg-yellow-500 h-1.5 rounded-full" style={{width:"65%"}} /></div>
                       </div>
                     </div>
-                    <div className="p-4 bg-green-50 text-center">
-                      <p className="text-xs font-bold text-green-700">🎉 Prêt pour l&apos;examen !</p>
+                    <div className="p-3 bg-green-50 text-center border-t">
+                      <p className="text-xs font-bold text-green-700">✅ Prêt pour l&apos;examen</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Floating badges */}
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 2.5, repeat: Infinity }}
-                  className="absolute -left-8 top-12 bg-white rounded-xl shadow-xl p-3 flex items-center gap-2"
+                  className="absolute -left-10 top-16 bg-white rounded-xl shadow-2xl p-3 flex items-center gap-2 border"
                 >
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircle size={16} className="text-green-600" />
+                  <div className="w-9 h-9 bg-green-100 rounded-full flex items-center justify-center">
+                    <CheckCircle size={18} className="text-green-600" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-gray-800">Série réussie</p>
@@ -196,10 +235,10 @@ export default function HomePage() {
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute -right-4 bottom-20 bg-white rounded-xl shadow-xl p-3 flex items-center gap-2"
+                  className="absolute -right-6 bottom-24 bg-white rounded-xl shadow-2xl p-3 flex items-center gap-2 border"
                 >
-                  <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <Trophy size={16} className="text-yellow-600" />
+                  <div className="w-9 h-9 bg-yellow-100 rounded-full flex items-center justify-center">
+                    <Trophy size={18} className="text-yellow-600" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-gray-800">Certificat obtenu</p>
