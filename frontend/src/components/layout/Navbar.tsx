@@ -20,7 +20,6 @@ export function Navbar() {
   const navLinks = [
     { href: "/cours", label: "Cours", icon: BookOpen },
     { href: "/revision", label: "Révision", icon: ClipboardCheck },
-    { href: "/videos", label: "Vidéos", icon: Video },
     { href: "/examen-blanc", label: "Examen blanc", icon: Trophy },
     { href: "/auto-ecoles", label: "Auto-écoles", icon: Building },
   ];
