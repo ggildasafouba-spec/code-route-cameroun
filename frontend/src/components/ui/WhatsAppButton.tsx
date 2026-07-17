@@ -6,13 +6,11 @@ import { X, MessageCircle } from "lucide-react";
 export function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const phoneNumber = ""; // À remplacer par ton numéro WhatsApp camerounais
+  const phoneNumber = "33609231509"; // Numéro WhatsApp (non visible sur le site)
   const message = encodeURIComponent(
     "Bonjour ! J'ai une question sur la formation au code de la route."
   );
-  const whatsappUrl = phoneNumber 
-    ? `https://wa.me/${phoneNumber}?text=${message}`
-    : "#";
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (
     <>
