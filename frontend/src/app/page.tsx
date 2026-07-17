@@ -27,7 +27,7 @@ export default function HomePage() {
         {/* Background image — conducteur africain au volant */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1920&q=80"
+            src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1920&q=80"
             alt="Conduite automobile"
             className="w-full h-full object-cover"
           />
@@ -209,8 +209,8 @@ export default function HomePage() {
             {[
               { step: "1", title: "Inscrivez-vous", desc: "Payez 30 000 FCFA via Mobile Money", img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80" },
               { step: "2", title: "Étudiez", desc: "Cours, QCM, examens blancs pendant 6 mois", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" },
-              { step: "3", title: "Validez", desc: "Réussissez 3 examens blancs à 80%+", img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80" },
-              { step: "4", title: "Passez l'examen", desc: "Inscription en auto-école partenaire", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" },
+              { step: "3", title: "Validez", desc: "Réussissez 3 examens blancs à 80%+", img: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=400&q=80" },
+              { step: "4", title: "Passez l'examen", desc: "Inscription en auto-école partenaire", img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0571?auto=format&fit=crop&w=400&q=80" },
             ].map((item, i) => (
               <motion.div
                 key={item.step}
@@ -342,7 +342,7 @@ export default function HomePage() {
       <section className="relative py-24 px-4 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=1920&q=80"
+            src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1920&q=80"
             alt="Route africaine"
             className="w-full h-full object-cover"
           />
