@@ -58,6 +58,11 @@ export { complementQuestions, complement2Questions } from "./questions-complemen
 // Questions finales
 export { finalQuestions } from "./questions-final";
 
+// Nouvelles séries supplémentaires
+export { signalisation4Questions } from "./questions-signalisation-4";
+export { priorites3Questions } from "./questions-priorites-3";
+export { securite3Questions } from "./questions-securite-3";
+
 // Vidéos
 export { videosData } from "./videos";
 
