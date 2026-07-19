@@ -65,7 +65,7 @@ export default function HomePage() {
               transition={{ delay: 0.5 }}
               className="text-xl text-gray-300 mb-10 leading-relaxed"
             >
-              Préparez l&apos;examen théorique du code de la route avec nos 500+ QCM, 
+              Préparez l&apos;examen théorique du code de la route avec nos 1000+ QCM, 
               nos examens blancs et notre suivi personnalisé. Payez avec MTN MoMo ou Orange Money.
             </motion.p>
 
@@ -168,7 +168,7 @@ export default function HomePage() {
               className="space-y-6"
             >
               {[
-                { icon: ClipboardCheck, color: "bg-blue-100 text-blue-600", title: "500+ questions QCM", desc: "Révisez avec des questions réalistes, corrigées et expliquées une par une." },
+                { icon: ClipboardCheck, color: "bg-blue-100 text-blue-600", title: "1000+ questions QCM", desc: "Révisez avec des questions réalistes, corrigées et expliquées une par une." },
                 { icon: Trophy, color: "bg-purple-100 text-purple-600", title: "Examens blancs illimités", desc: "40 questions en 30 minutes chrono. Chaque examen est différent du précédent." },
                 { icon: BookOpen, color: "bg-green-100 text-green-600", title: "10 thèmes de cours", desc: "Signalisation, priorités, sécurité, conduite... tout le programme officiel." },
                 { icon: Smartphone, color: "bg-orange-100 text-orange-600", title: "Accessible sur mobile", desc: "Révisez dans le bus, à la maison ou en pause. L'app fonctionne partout." },
@@ -260,7 +260,7 @@ export default function HomePage() {
                 <ul className="space-y-3 mb-8">
                   {[
                     "Accès à tous les cours (10 thèmes)",
-                    "500+ questions QCM avec corrections",
+                    "1000+ questions QCM avec corrections",
                     "Examens blancs illimités",
                     "Certificat de formation officiel",
                     "Mise en relation auto-école",
