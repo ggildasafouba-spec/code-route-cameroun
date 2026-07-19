@@ -59,6 +59,7 @@ export function Footer() {
               <li><Link href="/examen-blanc" className="hover:text-primary-400 transition-colors">Examens blancs</Link></li>
               <li><Link href="/certificat" className="hover:text-primary-400 transition-colors">Certificat de formation</Link></li>
               <li><Link href="/auto-ecoles" className="hover:text-primary-400 transition-colors">Auto-écoles partenaires</Link></li>
+              <li><Link href="/devenir-partenaire" className="hover:text-primary-400 transition-colors">Devenir partenaire</Link></li>
             </ul>
           </div>
 
