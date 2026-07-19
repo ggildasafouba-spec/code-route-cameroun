@@ -63,6 +63,9 @@ export { signalisation4Questions } from "./questions-signalisation-4";
 export { priorites3Questions } from "./questions-priorites-3";
 export { securite3Questions } from "./questions-securite-3";
 export { conduite3Questions } from "./questions-conduite-3";
+export { visibilite3Questions } from "./questions-visibilite-3";
+export { usagers3Questions } from "./questions-usagers-3";
+export { mecanique3Questions } from "./questions-mecanique-3";
 
 // Vidéos
 export { videosData } from "./videos";
