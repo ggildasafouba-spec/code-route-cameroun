@@ -69,6 +69,8 @@ export { mecanique3Questions } from "./questions-mecanique-3";
 export { environnement3Questions } from "./questions-environnement-3";
 export { secours3Questions } from "./questions-secours-3";
 export { administratif3Questions } from "./questions-administratif-3";
+export { situations3Questions } from "./questions-situations-3";
+export { mixFinalQuestions } from "./questions-mix-final";
 
 // Vidéos
 export { videosData } from "./videos";
