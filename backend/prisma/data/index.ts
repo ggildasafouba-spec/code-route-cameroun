@@ -66,6 +66,9 @@ export { conduite3Questions } from "./questions-conduite-3";
 export { visibilite3Questions } from "./questions-visibilite-3";
 export { usagers3Questions } from "./questions-usagers-3";
 export { mecanique3Questions } from "./questions-mecanique-3";
+export { environnement3Questions } from "./questions-environnement-3";
+export { secours3Questions } from "./questions-secours-3";
+export { administratif3Questions } from "./questions-administratif-3";
 
 // Vidéos
 export { videosData } from "./videos";
